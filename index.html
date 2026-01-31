@@ -83,7 +83,7 @@
 <body>
 
   <h1>
-    For My Dear Paloma <3 <br>
+    For My Dear Paloma ❤️<br>
     Talking to you feels like a dream I have always wanted to live.
   </h1>
 
@@ -93,17 +93,16 @@
   </p>
 
   <p>
-    Everyday with you I learn something new, and everyday with you I be more sure about one single thing
-    and its how much I want you.
+    Everyday with you I learn something new, and everyday with you I become more sure
+    about one single thing — how much I want you.
   </p>
 
   <p>
-   Your eyes are heavenly, your smile puts a soul back in my body and your laugh makes life worth living.
+    Your eyes are heavenly, your smile puts a soul back in my body,
+    and your laugh makes life worth living.
   </p>
 
-  <img id="mainImage"
-       src="https://i.pinimg.com/736x/e4/27/cf/e427cf3ac163c35bc4c8492f022ac5fa.jpg"
-       alt="Us">
+  <img id="mainImage" src="main.jpg" alt="Us">
 
   <div class="show-if-yes tenor-gif-embed"
        data-postid="9804311574812597097"
@@ -111,7 +110,7 @@
        data-aspect-ratio="1.23333"
        data-width="100%">
     <a href="https://tenor.com/view/cat-by-ednastochi-good-morning-oi-feliz-gif-9804311574812597097">
-      Cat By Ednastochi Sticker
+      Cat Sticker
     </a>
   </div>
 
@@ -132,7 +131,7 @@
     const img = document.getElementById("mainImage");
     const gif = document.querySelector(".show-if-yes");
 
-    const noTexts = ["Are you sure?", "Pleaseee", "C’monnn", "WHY!!!", "give up."];
+    const noTexts = ["Are you sure?", "Pleaseee", "C’monnn", "WHY!!!", "Okay okay 😔"];
     let noIndex = 0;
 
     yesBtn.addEventListener("click", () => {
@@ -142,7 +141,7 @@
       img.classList.add("pop");
       gif.style.display = "block";
       document.body.classList.add("yes-mode");
-      alert("LETS GOOOOOOOOOO 💖");
+      document.querySelector("h1").innerText = "She said YES 💖";
     });
 
     noBtn.addEventListener("click", () => {
