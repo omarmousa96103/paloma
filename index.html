@@ -34,6 +34,7 @@
       margin: 20px 0;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: opacity 0.4s ease;
     }
 
     .buttons {
@@ -76,6 +77,11 @@
     .show-if-yes {
       display: none;
       margin-top: 20px;
+    }
+
+    .hide {
+      opacity: 0;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -136,13 +142,17 @@
     let noIndex = 0;
 
     yesBtn.addEventListener("click", () => {
-      img.src = "yes.jpg";
-      img.classList.remove("pop");
-      void img.offsetWidth;
-      img.classList.add("pop");
+      // Hide the main image
+      img.classList.add("hide");
+
+      // Show the GIF
       gif.style.display = "block";
+
+      // Add yes-mode background
       document.body.classList.add("yes-mode");
-      alert("LETS GOOOOOOOOOO 💖");
+
+      // Change main heading
+      document.querySelector("h1").innerText = "She said YES 💖";
     });
 
     noBtn.addEventListener("click", () => {
