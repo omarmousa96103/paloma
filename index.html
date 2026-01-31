@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For My Dear Paloma</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #fff);
+      text-align: center;
+      padding: 40px;
+      color: #333;
+      transition: background 0.6s ease;
+    }
+
+    body.yes-mode {
+      background: linear-gradient(135deg, #ff9acb, #fff);
+    }
+
+    h1 {
+      color: #c2185b;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 12px auto;
+      font-size: 18px;
+    }
+
+    img {
+      width: 280px;
+      margin: 20px 0;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 26px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #yesBtn {
+      background: #e91e63;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ccc;
+    }
+
+    .pop {
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+
+    .show-if-yes {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>
+    For My Dear Paloma <3 <br>
+    Talking to you feels like a dream I have always wanted to live.
+  </h1>
+
+  <p>
+    I know it hasn’t been a long time since we met, but every conversation with you
+    pulls me closer in ways you probably don’t even realize.
+  </p>
+
+  <p>
+    Everyday with you I learn something new, and everyday with you I be more sure about one single thing
+    and its how much I want you.
+  </p>
+
+  <p>
+   Your eyes are heavenly, your smile puts a soul back in my body and your laugh makes life worth living.
+  </p>
+
+  <img id="mainImage"
+       src="https://i.pinimg.com/736x/e4/27/cf/e427cf3ac163c35bc4c8492f022ac5fa.jpg"
+       alt="Us">
+
+  <div class="show-if-yes tenor-gif-embed"
+       data-postid="9804311574812597097"
+       data-share-method="host"
+       data-aspect-ratio="1.23333"
+       data-width="100%">
+    <a href="https://tenor.com/view/cat-by-ednastochi-good-morning-oi-feliz-gif-9804311574812597097">
+      Cat By Ednastochi Sticker
+    </a>
+  </div>
+
+  <script async src="https://tenor.com/embed.js"></script>
+
+  <h1>Would you love to be my Valentine? 💘</h1>
+
+  <div class="buttons">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+
+  <h3>With <b>like</b>,<br>Omar</h3>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const img = document.getElementById("mainImage");
+    const gif = document.querySelector(".show-if-yes");
+
+    const noTexts = ["Are you sure?", "Pleaseee", "C’monnn", "WHY!!!", "give up."];
+    let noIndex = 0;
+
+    yesBtn.addEventListener("click", () => {
+      img.src = "yes.jpg";
+      img.classList.remove("pop");
+      void img.offsetWidth;
+      img.classList.add("pop");
+      gif.style.display = "block";
+      document.body.classList.add("yes-mode");
+      alert("LETS GOOOOOOOOOO 💖");
+    });
+
+    noBtn.addEventListener("click", () => {
+      if (noIndex < noTexts.length) {
+        noBtn.textContent = noTexts[noIndex];
+        noIndex++;
+      } else {
+        noBtn.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
