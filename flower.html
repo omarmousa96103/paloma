@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Flower Canvas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Tulips</title>
+
   <style>
     html, body {
       margin: 0;
@@ -23,48 +25,105 @@
 <canvas id="canvas"></canvas>
 
 <script>
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
 
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
-
   resize();
-  window.addEventListener('resize', resize);
+  window.addEventListener("resize", resize);
 
-  canvas.addEventListener('click', (e) => {
+  canvas.addEventListener("click", (e) => {
     const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    drawFlower(x, y);
+    drawTulip(
+      e.clientX - rect.left,
+      e.clientY - rect.top
+    );
   });
 
-  function drawFlower(x, y) {
-    const petals = 10;
-    const petalRadius = 18;
-    const distance = 30;
+  function drawTulip(x, y) {
+    const stemCurve = (Math.random() * 50) - 25;
+    const stemEndY = canvas.height;
 
-    const petalColors = ['#ff69b4', '#ffb6c1', '#dda0dd', '#ff7eb9'];
-    const petalColor = petalColors[Math.floor(Math.random() * petalColors.length)];
-
-    // petals
-    for (let i = 0; i < petals; i++) {
-      const angle = (Math.PI * 2 / petals) * i;
-      const px = x + Math.cos(angle) * distance;
-      const py = y + Math.sin(angle) * distance;
-
-      ctx.beginPath();
-      ctx.arc(px, py, petalRadius, 0, Math.PI * 2);
-      ctx.fillStyle = petalColor;
-      ctx.fill();
-    }
-
-    // center
+    // 🌿 thin curved stem
     ctx.beginPath();
-    ctx.arc(x, y, 14, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffd700';
+    ctx.moveTo(x, y + 10);
+    ctx.quadraticCurveTo(
+      x + stemCurve,
+      (y + stemEndY) / 2,
+      x,
+      stemEndY
+    );
+    ctx.strokeStyle = "#3a7d44";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // 🎨 tulip colors
+    const tulipColors = [
+      ["#ff5fa2", "#ff8fc2"], // pink
+      ["#b56cff", "#d2a1ff"], // purple
+      ["#ff4b4b", "#ff7a7a"]  // red
+    ];
+
+    const [dark, light] =
+      tulipColors[Math.floor(Math.random() * tulipColors.length)];
+
+    // 🌷 tulip head
+    drawTulipHead(x, y, dark, light);
+  }
+
+  function drawTulipHead(x, y, dark, light) {
+    const petalHeight = 46;
+    const petalWidth = 18;
+
+    // center petal
+    ctx.beginPath();
+    ctx.ellipse(x, y, petalWidth, petalHeight, 0, 0, Math.PI * 2);
+    ctx.fillStyle = dark;
+    ctx.fill();
+
+    // left petal
+    ctx.beginPath();
+    ctx.ellipse(
+      x - 14,
+      y + 4,
+      petalWidth - 4,
+      petalHeight - 6,
+      -0.3,
+      0,
+      Math.PI * 2
+    );
+    ctx.fillStyle = light;
+    ctx.fill();
+
+    // right petal
+    ctx.beginPath();
+    ctx.ellipse(
+      x + 14,
+      y + 4,
+      petalWidth - 4,
+      petalHeight - 6,
+      0.3,
+      0,
+      Math.PI * 2
+    );
+    ctx.fillStyle = light;
+    ctx.fill();
+
+    // subtle highlight
+    ctx.beginPath();
+    ctx.ellipse(
+      x - 4,
+      y - 10,
+      4,
+      14,
+      -0.2,
+      0,
+      Math.PI * 2
+    );
+    ctx.fillStyle = "rgba(255,255,255,0.25)";
     ctx.fill();
   }
 </script>
