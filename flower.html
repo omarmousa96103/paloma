@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flower Canvas</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    canvas {
+      display: block;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  canvas.addEventListener('click', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    drawFlower(x, y);
+  });
+
+  function drawFlower(x, y) {
+    const petals = 10;
+    const petalRadius = 18;
+    const distance = 30;
+
+    const petalColors = ['#ff69b4', '#ffb6c1', '#dda0dd', '#ff7eb9'];
+    const petalColor = petalColors[Math.floor(Math.random() * petalColors.length)];
+
+    // petals
+    for (let i = 0; i < petals; i++) {
+      const angle = (Math.PI * 2 / petals) * i;
+      const px = x + Math.cos(angle) * distance;
+      const py = y + Math.sin(angle) * distance;
+
+      ctx.beginPath();
+      ctx.arc(px, py, petalRadius, 0, Math.PI * 2);
+      ctx.fillStyle = petalColor;
+      ctx.fill();
+    }
+
+    // center
+    ctx.beginPath();
+    ctx.arc(x, y, 14, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffd700';
+    ctx.fill();
+  }
+</script>
+
+</body>
+</html>

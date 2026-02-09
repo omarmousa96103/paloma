@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For My Dear Paloma</title>
 
   <style>
@@ -33,7 +34,7 @@
       width: 280px;
       margin: 20px 0;
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       transition: opacity 0.4s ease;
     }
 
@@ -69,9 +70,17 @@
     }
 
     @keyframes pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.4); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.4);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     .show-if-yes {
@@ -90,7 +99,7 @@
 
   <h1>
     For My Dear Paloma <3 <br>
-    Talking to you feels like a dream I have always wanted to live.
+      Talking to you feels like a dream I have always wanted to live.
   </h1>
 
   <p>
@@ -104,18 +113,13 @@
   </p>
 
   <p>
-   Your eyes are heavenly, your smile puts a soul back in my body and your laugh makes life worth living.
+    Your eyes are heavenly, your smile puts a soul back in my body and your laugh makes life worth living.
   </p>
 
-  <img id="mainImage"
-       src="https://i.pinimg.com/736x/e4/27/cf/e427cf3ac163c35bc4c8492f022ac5fa.jpg"
-       alt="Us">
+  <img id="mainImage" src="https://i.pinimg.com/736x/e4/27/cf/e427cf3ac163c35bc4c8492f022ac5fa.jpg" alt="Us">
 
-  <div class="show-if-yes tenor-gif-embed"
-       data-postid="9804311574812597097"
-       data-share-method="host"
-       data-aspect-ratio="1.23333"
-       data-width="100%">
+  <div class="show-if-yes tenor-gif-embed" data-postid="9804311574812597097" data-share-method="host"
+    data-aspect-ratio="1.23333" data-width="100%">
     <a href="https://tenor.com/view/cat-by-ednastochi-good-morning-oi-feliz-gif-9804311574812597097">
       Cat By Ednastochi Sticker
     </a>
@@ -129,6 +133,9 @@
     <button id="yesBtn">Yes</button>
     <button id="noBtn">No</button>
   </div>
+  <button id="flowerBtn" style="display:none; margin-top:20px; background:#c2185b; color:white;">
+    Receive your flowers 🌸
+  </button>
 
   <h3>With <b>like</b>,<br>Omar</h3>
 
@@ -137,6 +144,8 @@
     const noBtn = document.getElementById("noBtn");
     const img = document.getElementById("mainImage");
     const gif = document.querySelector(".show-if-yes");
+    const flowerBtn = document.getElementById("flowerBtn");
+
 
     const noTexts = ["Are you sure?", "Pleaseee", "C’monnn", "WHY!!!", "give up."];
     let noIndex = 0;
@@ -153,6 +162,7 @@
 
       // Change main heading
       document.querySelector("h1").innerText = "She said YES 💖";
+      flowerBtn.style.display = "inline-block";
     });
 
     noBtn.addEventListener("click", () => {
@@ -163,7 +173,13 @@
         noBtn.style.display = "none";
       }
     });
+
+    flowerBtn.addEventListener("click", () => {
+      window.location.href = "flower.html";
+    });
+
   </script>
 
 </body>
+
 </html>
